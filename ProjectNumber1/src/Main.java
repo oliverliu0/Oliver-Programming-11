@@ -40,11 +40,12 @@ public class Main {
         int start = 0; //starting index of our return substring
 
         for (int i = 1; i < s.length(); i++) { //i is the ending index
-            if (s.charAt(i) < s.charAt(i-1)) { //if it's in alphabetical order
+            // Check whether the current character is less than the previous, which would mean the characters are no longer in alphabetical order
+            if (s.charAt(i) < s.charAt(i-1)) { 
                 if (i - start > my_string.length()) { //if current substring is longer than string
-                    my_string = s.substring(start, i); //update substring
+                    my_string = s.substring(start, i); //update longest substring
                 }
-                start = i; //Using previous end point as our new starting point
+                start = i; // Using previous end point as our new starting point
             }
 
             }
@@ -55,7 +56,7 @@ public class Main {
         my_string = s.substring(start); //to handle the case where the longest alphabetical subtring is at the end of the string
         }
         //TODO
-        return my_string;
+        return my_string; // Return the longest alphabetical substring
     }
     public static void main(String[] args) {
         /*
