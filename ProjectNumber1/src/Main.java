@@ -2,26 +2,32 @@ import java.util.Scanner;
 
 public class Main {
     //Code your solution to problem number one here
-    static int problemOne(String s){
-        int vowelCount = 0;
+    static int problemOne(String s){ 
+        int vowelCount = 0; //initialize a variable to count the amount of vowels in a string
 
+        // Looping through each character in the string
         for (int i = 0; i < s.length(); i++) {
-            char currentChar = s.charAt(i);
+            char currentChar = s.charAt(i); // Get current character at index i
 
+            //Checking if each character in the string is a vowel (a, e, i, o, u)
             if (currentChar == 'a' || currentChar == 'e' || currentChar == 'i' || currentChar == 'o' || currentChar == 'u') {
-                vowelCount++;
+                vowelCount++; //If yes, vowelCount variable will increase by one
 
             }
         }
         
-        return vowelCount;
+        return vowelCount; //return total amount of vowels in a particular string
     }
     //Code you problem number two here
-    static int problemTwo(String s){
-        int bobCount = 0;
-        for (int i = 0; i + 2 < s.length(); i++) {
+    static int problemTwo(String s){ 
+        int bobCount = 0; //Initialize a variable to count the number of times "bob" occurs in a string
+
+        // Loop through the string, checking whether the substring equals "bob"
+        // The loop stops when there are fewer than 3 characters remaining to prevent out of bounds error. 
+        for (int i = 0; i + 2 < s.length(); i++) { 
+            // Check if the substring starting at index i in the string equals "bob"
             if (s.charAt(i) == 'b' && s.charAt(i + 1) == 'o' && s.charAt(i + 2) == 'b') {
-                bobCount++;
+                bobCount++; //if so, increase the counter by 1.
             }
 
         }
