@@ -7,10 +7,15 @@ public class Customer {
     private ArrayList<Deposit> deposits;
     private ArrayList<Withdraw> withdraws;
 
+    //Requires: We need an instance of customer class
+    //Modifies: this (nothing will be changed)
+    //Effects: Return current balance of chequing account as a double type
     public double getCheckBalance() {
         return checkBalance;
     }
-
+    //Requires: We need an instance of customer class
+    //Modifies: this (nothing will be changed)
+    //Effects: Return current balance of savings account as a double type
     public double getSavingBalance() {
         return savingBalance;
     }
@@ -23,6 +28,10 @@ public class Customer {
     public static final String SAVING = "Saving";
     private final int OVERDRAFT = -100;
 
+    //Requires: none
+    //Modifies: this
+    //Effects: create an instance of customer class with default value
+
     Customer(){
         //create default constructor
         this.name = "";
@@ -32,6 +41,9 @@ public class Customer {
         this.checkBalance = 0;
         this.savingBalance = 0;
     }
+    //Requires: a string type for name, integer type for account number, double type for cheque deposit, double type for saving deposit
+    //Modifies: this
+    //Effects: create an instance of customer class with user inputed value
     Customer(String name, int accountNumber, double checkDeposit, double savingDeposit){
         //constructor code here
         this.name = name;
@@ -43,6 +55,10 @@ public class Customer {
     }
 
     // Method for deposit
+    //Requires: we require a double type deposit amount, Date type date, string type for account
+    //Modifies: this
+    //Effects: we are going to add transaction record to deposits arraylist. If the account type matches with either chequing or saving
+    //         if nothing matches, we do nothing
     public double deposit(double amt, Date date, String account) {
         if (amt <= 0) {
             System.out.println("Deposit amount must be positive.");
@@ -66,6 +82,10 @@ public class Customer {
     }
 
     // Method for withdraw
+    //Requires: we require a double type withdraw amount, Date type date, string type for account
+    //Modifies: this
+    //Effects: we are going to add withdraw record to withdraw arraylist. If the account type matches with either chequing or saving 
+    //         and doesn't overdraft. If nothing matches, we do nothing
     public double withdraw(double amt, Date date, String account) {
         if (amt <= 0) {
             System.out.println("Withdraw amount must be positive.");
@@ -97,6 +117,9 @@ public class Customer {
             return 0; // Invalid account type should return 0
         }
     }
+    //Requires: we require a double type withdraw amount, string type for account
+    //Modifies: this
+    //Effects: we are going to check whether the user is overdrafting. If so, we are going to return true; if not, we return false. 
     private boolean checkOverdraft(double amt, String account) {
         if (account.equals(CHECKING)) {
             // Checking if the withdrawal exceeds the current balance plus overdraft limit
@@ -107,13 +130,17 @@ public class Customer {
         }
         return false; // Invalid account type, treat it as an overdraft failure
     }
-    //do not modify
+    //Requires: we require none
+    //Modifies: this
+    //Effects: we are going to print out all the deposit history in the deposit array list 
     public void displayDeposits(){
         for(Deposit d : deposits){
             System.out.println(d);
         }
     }
-    //do not modify
+    //Requires: we require none
+    //Modifies: this
+    //Effects: we are going to print out all the withdraw history in the withdraw array list 
     public void displayWithdraws(){
         for(Withdraw w : withdraws){
             System.out.println(w);
